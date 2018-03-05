@@ -2,15 +2,33 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Ejemplo básico con JSX</title>
-    <link rel="stylesheet" href="main.css"/>
+    <title>Random-box</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Cinzel|Dancing+Script|Krona+One|Pacifico|Righteous|Roboto" rel="stylesheet">
     <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+    <script crossorigin src = "https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
   </head>
   <body>
     <div id="container"></div>
-    <script type="text">
-      
+    <script type="text/babel">
+      class Box extends React.Component {
+        render(){
+            function selectColor() {
+                const colors = ['#feba89','#fee25d','#ffb8d6','#83c8e3', '#8756a5', '#c1d1c4'];
+                let ramdomColors = colors[Math.floor(Math.random()*colors.length)];
+                const fonts = ['Roboto', 'Righteous', 'Pacifico','Krona+One', 'Dancing+Script','Cinzel']
+                let randomFonts =  fonts[Math.floor(Math.random()*fonts.length)];
+                let colorStyle = {backgroundColor: ramdomColors, fontFamily: randomFonts }
+
+                return colorStyle ;
+              };
+            return (
+                <div style={selectColor()} className ="container-box ">Random box</div>
+            );
+           }
+         }
+     ReactDOM.render(<Box/>, document.getElementById('container'));
     </script>
   </body>
 </html>
